@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*
+  0-600:          Phone
+  > - 900:        Tablet Portrait
+  > - 1200:       Tablet Landscape
+  [1200 - 1800]:  Normal Styles
+  1800+:          Big Desktops
+  */
+/* 
+  $breakpoint arguments:
+  phone, tab-port, tab-land, big-desktop
+  */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body::-webkit-scrollbar {
+  width: 1em; }
+
+body::-webkit-scrollbar-track {
+  border: 1px solid #fff;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+body::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to bottom, rgba(143, 33, 33, 0.7), rgba(27, 25, 155, 0.7), rgba(143, 33, 33, 0.7));
+  border: 1px solid black;
+  border-radius: 50px; }
+
+a {
+  text-decoration: none; }
+
+::selection {
+  background-color: #1b199b;
+  color: #fff; }
+
+.app {
+  background: linear-gradient(169deg, #190250 0%, #38aae4 100%); }
