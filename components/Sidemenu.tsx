@@ -1,23 +1,27 @@
 import { useState } from 'react';
 import { VscClose } from 'react-icons/vsc';
 import { ISidemenuProps, Pages } from '../types';
-import { useEtherBalance, useEthers } from '@usedapp/core';
 import { formatEther } from 'ethers/lib/utils';
 
+import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } from '@usedapp/core';
+
+import { config } from '../types';
 const Sidemenu: React.FC<ISidemenuProps> = ({ sidemenuVisibility, toggleSideMenu, setPage }) => {
-  const { activateBrowserWallet, account, deactivate } = useEthers();
+  const { account, chainId } = useEthers();
+  const etherBalance = useEtherBalance(account);
+  if (chainId && !config.readOnlyUrls![chainId]) {
+    return <p>Please use either Mainnet or Goerli testnet.</p>;
+  }
 
   function handleToggleClick() {
     toggleSideMenu();
   }
 
-  const userBalance = useEtherBalance(account);
-  const handleWalletConnection = async () => {
-    if (!account) {
-      await activateBrowserWallet();
-    } else {
-      deactivate();
-    }
+  const { deactivate, activateBrowserWallet } = useEthers();
+  const ConnectButton = () => {
+    // 'account' being undefined means that we are not connected.
+    if (account) return <button onClick={() => deactivate()}>Disconnect</button>;
+    else return <button onClick={() => activateBrowserWallet()}>Connect</button>;
   };
 
   return (
@@ -41,14 +45,19 @@ const Sidemenu: React.FC<ISidemenuProps> = ({ sidemenuVisibility, toggleSideMenu
             Minter
           </button>
 
-          <button onClick={handleWalletConnection}>{account ? 'Disconnect Wallet' : 'Connect Wallet'}</button>
-
-          {account && (
-            <div>
-              <p>Account: {account}</p>
-              <p>Balance: {userBalance && formatEther(userBalance)} ETH</p>
-            </div>
-          )}
+          <div className='bg-white text-black'>
+            <ConnectButton />
+            {etherBalance && (
+              <div>
+                <br />
+                Address:
+                <p className='bold'>{account}</p>
+                <br />
+                Balance:
+                <p className='bold'>{formatEther(etherBalance)}</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

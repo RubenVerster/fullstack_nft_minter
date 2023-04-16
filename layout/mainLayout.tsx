@@ -18,6 +18,7 @@ import { Network, Alchemy } from 'alchemy-sdk';
 import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } from '@usedapp/core';
 import { formatEther } from '@ethersproject/units';
 import { getDefaultProvider } from 'ethers';
+import { config } from '../types';
 
 const MainLayout = () => {
   const [page, setPage] = useState(Pages.DASHBOARD);
@@ -38,21 +39,23 @@ const MainLayout = () => {
   };
 
   return (
-    <div className='h-screen w-full relative px-20 app'>
-      <Head>
-        <title>NFT Minter THA</title>
-        <meta name='description' content='NFT Minter THA' />
-        <link rel='icon' href='/favicon.png' />
-      </Head>
+    <DAppProvider config={config}>
+      <div className='h-screen w-full relative px-20 app'>
+        <Head>
+          <title>NFT Minter THA</title>
+          <meta name='description' content='NFT Minter THA' />
+          <link rel='icon' href='/favicon.png' />
+        </Head>
 
-      <Header {...{ toggleSideMenu }} />
-      {page === Pages.DASHBOARD && <Dashboard {...{ nfts, setNft, setModalVisibility }} />}
-      {page === Pages.MINTER && <Minter />}
-      <Sidemenu {...{ setPage, toggleSideMenu, sidemenuVisibility }} />
+        <Header {...{ toggleSideMenu }} />
+        {page === Pages.DASHBOARD && <Dashboard {...{ nfts, setNft, setModalVisibility }} />}
+        {page === Pages.MINTER && <Minter />}
+        <Sidemenu {...{ setPage, toggleSideMenu, sidemenuVisibility }} />
 
-      <Modal {...{ modalVisibility, setModalVisibility, nft }} />
-      <Footer />
-    </div>
+        <Modal {...{ modalVisibility, setModalVisibility, nft }} />
+        <Footer />
+      </div>
+    </DAppProvider>
   );
 };
 

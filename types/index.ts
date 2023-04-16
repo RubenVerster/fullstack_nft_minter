@@ -32,3 +32,15 @@ export interface ISidemenuProps {
   toggleSideMenu: () => void;
   setPage: (page: Pages) => void;
 }
+
+import { getDefaultProvider } from 'ethers';
+
+import { Mainnet, Config, Goerli } from '@usedapp/core';
+
+export const config: Config = {
+  readOnlyChainId: Mainnet.chainId,
+  readOnlyUrls: {
+    [Mainnet.chainId]: getDefaultProvider('mainnet'),
+    [Goerli.chainId]: getDefaultProvider('goerli'),
+  },
+};
