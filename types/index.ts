@@ -34,13 +34,15 @@ export interface ISidemenuProps {
 }
 
 import { getDefaultProvider } from 'ethers';
+import { ChainId, Config, Goerli } from '@usedapp/core';
 
-import { Mainnet, Config, Goerli } from '@usedapp/core';
+const getAlchemyEndpoint = () => {
+  return process.env.NEXT_PUBLIC_ALCHEMY_ENDPOINT || '';
+};
 
 export const config: Config = {
-  readOnlyChainId: Mainnet.chainId,
+  readOnlyChainId: ChainId.Goerli,
   readOnlyUrls: {
-    [Mainnet.chainId]: getDefaultProvider('mainnet'),
-    [Goerli.chainId]: getDefaultProvider('goerli'),
+    [Goerli.chainId]: getAlchemyEndpoint(),
   },
 };

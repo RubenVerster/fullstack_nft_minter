@@ -10,7 +10,7 @@ const Sidemenu: React.FC<ISidemenuProps> = ({ sidemenuVisibility, toggleSideMenu
   const { account, chainId } = useEthers();
   const etherBalance = useEtherBalance(account);
   if (chainId && !config.readOnlyUrls![chainId]) {
-    return <p>Please use either Mainnet or Goerli testnet.</p>;
+    return <p>Please use Goerli testnet.</p>;
   }
 
   function handleToggleClick() {
@@ -20,7 +20,12 @@ const Sidemenu: React.FC<ISidemenuProps> = ({ sidemenuVisibility, toggleSideMenu
   const { deactivate, activateBrowserWallet } = useEthers();
   const ConnectButton = () => {
     // 'account' being undefined means that we are not connected.
-    if (account) return <button onClick={() => deactivate()}>Disconnect</button>;
+    if (account)
+      return (
+        <button className='bg-red-400 rounded w-full ' onClick={() => deactivate()}>
+          Disconnect
+        </button>
+      );
     else return <button onClick={() => activateBrowserWallet()}>Connect</button>;
   };
 
@@ -45,10 +50,10 @@ const Sidemenu: React.FC<ISidemenuProps> = ({ sidemenuVisibility, toggleSideMenu
             Minter
           </button>
 
-          <div className='bg-white text-black'>
+          <div className='absolute bottom-2 w-full'>
             <ConnectButton />
             {etherBalance && (
-              <div>
+              <div className='bg-white text-black p-2'>
                 <br />
                 Address:
                 <p className='bold'>{account}</p>
