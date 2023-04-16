@@ -35,7 +35,7 @@ const Modal: React.FC<IModalProps> = ({ nft, modalVisibility, setModalVisibility
         }`}
       >
         <div className='flex'>
-          <img src={`./src/assets/nfts/${nft.imageSrc}`} alt='nft' />
+          <img src={`/assets/nfts/${nft.imageSrc}`} alt='nft' />
           <div className='flex flex-col justify-center p-4'>
             <h2 className='text-xl font-bold mb-4'>{nft.name}</h2>
 

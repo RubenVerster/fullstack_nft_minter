@@ -13,6 +13,10 @@ import Modal from '../components/Modal';
 import { DummNfts } from '../dummyData';
 import { Network, Alchemy } from 'alchemy-sdk';
 
+import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } from '@usedapp/core';
+import { formatEther } from '@ethersproject/units';
+import { getDefaultProvider } from 'ethers';
+
 const MainLayout = () => {
   const [page, setPage] = useState(Pages.DASHBOARD);
   const [sidemenuVisibility, setSidemenuVisibility] = useState(false);
@@ -32,7 +36,7 @@ const MainLayout = () => {
   };
 
   return (
-    <div className='h-screen w-screen relative px-20 app'>
+    <div className='h-screen w-full relative px-20 app'>
       <Header {...{ toggleSideMenu }} />
       {page === Pages.DASHBOARD && <Dashboard {...{ nfts, setNft, setModalVisibility }} />}
       {page === Pages.MINTER && <Minter />}
