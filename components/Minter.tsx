@@ -32,7 +32,7 @@ function YourComponent() {
     if (library) {
       setContract(
         new Contract(
-          contractAddress,
+          contractAddress!,
           ContractAbi.abi,
           (library as ethers.providers.JsonRpcProvider).getSigner()
         )
