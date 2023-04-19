@@ -26,7 +26,7 @@ const Modal: React.FC<IModalProps> = ({ nft, modalVisibility, setModalVisibility
       aria-modal='true'
     >
       <div
-        className={`fixed  w-3/4 h-3/4 mx-auto bg-slate-800 rounded-lg border-2 border-gray-500 shadow-lg p-6 pr-6 
+        className={`fixed card w-3/4 h-3/4 mx-auto rounded-xl border-gray-500 shadow-lg p-2 
         transition-all duration-500 ease-in-out
         ${
           modalVisibility
@@ -34,7 +34,7 @@ const Modal: React.FC<IModalProps> = ({ nft, modalVisibility, setModalVisibility
             : 'top-1/2 left-1/2 invisible transform -translate-x-1/2 -translate-y-0 opacity-0'
         }`}
       >
-        <div className='flex'>
+        <div className='flex bg-slate-800 h-full rounded-xl overflow-hidden'>
           <img src={`/assets/nfts/${nft.imageSrc}`} alt='nft' />
           <div className='flex flex-col justify-center p-4'>
             <h2 className='text-xl font-bold mb-4'>{nft.name}</h2>
@@ -42,7 +42,7 @@ const Modal: React.FC<IModalProps> = ({ nft, modalVisibility, setModalVisibility
             <p className='text-gray-600 mb-4'>{nft.description}</p>
           </div>
         </div>
-        <button className='absolute right-4 top-4 text-white' onClick={() => setModalVisibility(false)}>
+        <button className='absolute right-6 top-6 z-50 text-white' onClick={() => setModalVisibility(false)}>
           <VscClose size={24} />
         </button>
       </div>

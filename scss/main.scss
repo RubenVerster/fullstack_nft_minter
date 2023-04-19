@@ -6,3 +6,37 @@
 @import './abstract/mixins';
 
 @import './base/base';
+
+.card {
+  position: absolute;
+  overflow: hidden;
+  background: #000;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  height: 500%;
+  width: 500%;
+  top: -200%;
+  left: -200%;
+  background-image: linear-gradient(180deg, rgb(0, 183, 255) 0%, rgb(255, 48, 255) 100%);
+  animation: rotateBg 3s linear infinite;
+  transform: all 3s linear;
+}
+
+@keyframes rotateBg {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+}

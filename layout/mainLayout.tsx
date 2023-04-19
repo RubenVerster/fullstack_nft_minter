@@ -21,7 +21,7 @@ import { getDefaultProvider } from 'ethers';
 import { config } from '../types';
 
 const MainLayout = () => {
-  const [page, setPage] = useState(Pages.DASHBOARD);
+  const [page, setPage] = useState(Pages.MINTER);
   const [sidemenuVisibility, setSidemenuVisibility] = useState(false);
 
   const [modalVisibility, setModalVisibility] = useState(false);
