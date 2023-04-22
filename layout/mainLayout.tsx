@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Pages } from '../types';
 
 import Head from 'next/head';
@@ -12,8 +12,6 @@ import Header from '../components/Header';
 import { Nft } from '../types';
 import Modal from '../components/Modal';
 
-import { DummNfts } from '../dummyData';
-
 import { DAppProvider } from '@usedapp/core';
 import { config } from '../types';
 
@@ -22,8 +20,6 @@ const MainLayout = () => {
   const [sidemenuVisibility, setSidemenuVisibility] = useState(false);
 
   const [modalVisibility, setModalVisibility] = useState(false);
-
-  const [nfts, setNfts] = useState<Nft[]>(DummNfts);
 
   const [nft, setNft] = useState<Nft>({
     name: 'test 1',
@@ -45,7 +41,7 @@ const MainLayout = () => {
         </Head>
 
         <Header {...{ toggleSideMenu }} />
-        {page === Pages.DASHBOARD && <Dashboard {...{ nfts, setNft, setModalVisibility }} />}
+        {page === Pages.DASHBOARD && <Dashboard {...{ setNft, setModalVisibility }} />}
         {page === Pages.MINTER && <Minter />}
         <Sidemenu {...{ setPage, toggleSideMenu, sidemenuVisibility }} />
 

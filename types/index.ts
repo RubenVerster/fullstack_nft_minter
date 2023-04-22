@@ -10,7 +10,6 @@ export interface Nft {
 }
 
 export interface IDashboardProps {
-  nfts: Nft[];
   setNft: React.Dispatch<React.SetStateAction<Nft>>;
   setModalVisibility: React.Dispatch<React.SetStateAction<boolean>>;
 }
