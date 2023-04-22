@@ -114,7 +114,7 @@ const Dashboard: React.FC<IDashboardProps> = ({
                   </button>{' '}
                 </div>
               ) : (
-                <div className='grid grid-cols-4 gap-2 w-full'>
+                <div className='grid grid-cols-4 gap-2 w-full h-1/2 overflow-y-scroll pb-52 dashboard'>
                   {nfts.map((nft, index) => (
                     <NftThumbnail key={index} {...{ nft, setNft, setModalVisibility }} />
                   ))}

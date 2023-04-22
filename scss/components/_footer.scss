@@ -6,17 +6,17 @@
   left: -50%;
   line-height: 0;
   animation: motionOfTheOcean 11s linear infinite;
-}
 
-.wave svg {
-  position: relative;
-  display: block;
-  width: 200vw;
-  height: 120px;
-}
+  svg {
+    position: relative;
+    display: block;
+    width: 200vw;
+    height: 120px;
+  }
 
-.wave .shape-fill {
-  fill: rgba($color: #000000, $alpha: 0.9);
+  .shape-fill {
+    fill: rgba($color: #000000, $alpha: 0.9);
+  }
 }
 
 // animation to move the custom shape left and right

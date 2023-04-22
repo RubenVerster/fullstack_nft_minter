@@ -8,51 +8,47 @@
   padding: 0;
   box-sizing: border-box; }
 
-body::-webkit-scrollbar {
-  width: 1em; }
+.app {
+  background: linear-gradient(169deg, #021650 0%, #38aae4 100%); }
 
-body::-webkit-scrollbar-track {
-  border: 1px solid #fff;
+.dashboard::-webkit-scrollbar {
+  width: 0.5rem; }
+
+.dashboard::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
 
-body::-webkit-scrollbar-thumb {
+.dashboard::-webkit-scrollbar-thumb {
   background-image: linear-gradient(to bottom, rgba(0, 0, 255, 0.7), rgba(0, 0, 139, 0.7), rgba(0, 0, 255, 0.7));
   border: 1px solid black;
   border-radius: 50px; }
-
-.app {
-  background: linear-gradient(169deg, #021650 0%, #38aae4 100%); }
 
 .dashboard_title {
   background: linear-gradient(90deg, #e7e7e7 1.14%, #9e9e9e 28.83%, #f2f2f2 57.49%, #949494 89.98%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
   font-size: 2.5rem; }
 
 .card {
   position: absolute;
   overflow: hidden;
   background: #000; }
-
-.card::before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  height: 500%;
-  width: 500%;
-  top: -200%;
-  left: -200%;
-  background-image: linear-gradient(180deg, #00b7ff 0%, #2034b9 100%);
-  animation: rotateBg 3s linear infinite;
-  transform: all 3s linear; }
-
-.card::after {
-  content: '';
-  position: absolute;
-  inset: 5px; }
+  .card::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    height: 500%;
+    width: 500%;
+    top: -200%;
+    left: -200%;
+    background-image: linear-gradient(180deg, white 0%, #1d3bff 100%);
+    animation: rotateBg 3s linear infinite;
+    transform: all 3s linear; }
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 5px; }
 
 @keyframes rotateBg {
   0% {
@@ -68,15 +64,13 @@ body::-webkit-scrollbar-thumb {
   left: -50%;
   line-height: 0;
   animation: motionOfTheOcean 11s linear infinite; }
-
-.wave svg {
-  position: relative;
-  display: block;
-  width: 200vw;
-  height: 120px; }
-
-.wave .shape-fill {
-  fill: rgba(0, 0, 0, 0.9); }
+  .wave svg {
+    position: relative;
+    display: block;
+    width: 200vw;
+    height: 120px; }
+  .wave .shape-fill {
+    fill: rgba(0, 0, 0, 0.9); }
 
 @keyframes motionOfTheOcean {
   0% {
