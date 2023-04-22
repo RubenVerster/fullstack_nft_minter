@@ -86,7 +86,7 @@ const Minter: React.FC<IMinterProps> = ({ setSidemenuVisibility }) => {
       {!account ? (
         <div className='bg-white p-4 rounded border-2 border-blue-200 w-1/2'>
           <h3 className='text-2xl'>
-            To view your minted NFTs, please{' '}
+            To start minting your NFTs, please{' '}
             <span
               className='cursor-pointer text-blue-300 hover:text-blue-800'
               onClick={() => setSidemenuVisibility(true)}
