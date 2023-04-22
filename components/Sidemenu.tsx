@@ -24,7 +24,7 @@ const Sidemenu: React.FC<ISidemenuProps> = ({ sidemenuVisibility, toggleSideMenu
     <div
       className={`p-4 fixed z-10 h-full top-0 ${
         sidemenuVisibility ? 'right-0' : '-right-1/4'
-      } w-1/4 sm:w-full lg:w-1/4 bg-black border-l-2 border-white transition-all duration-400 ease-in-out`}
+      } w-1/4 bg-black border-l-2 border-white transition-all duration-400 ease-in-out`}
     >
       <div className='relative h-full'>
         <div className='flex flex-col justify-center text-center'>

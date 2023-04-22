@@ -11,6 +11,8 @@ export interface Nft {
 
 export interface IDashboardProps {
   setNft: React.Dispatch<React.SetStateAction<Nft>>;
+  setPage: React.Dispatch<React.SetStateAction<Pages>>;
+  setSidemenuVisibility: React.Dispatch<React.SetStateAction<boolean>>;
   setModalVisibility: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -32,7 +34,18 @@ export interface ISidemenuProps {
   setPage: (page: Pages) => void;
 }
 
-import { getDefaultProvider } from 'ethers';
+export interface IButtonProps {
+  text: string;
+  onClick: () => void;
+  variant?: ButtonVariants;
+  className?: string;
+}
+
+export enum ButtonVariants {
+  PRIMARY = 'primary',
+  ERROR = 'error',
+}
+
 import { ChainId, Config, Goerli } from '@usedapp/core';
 
 const getAlchemyEndpoint = () => {

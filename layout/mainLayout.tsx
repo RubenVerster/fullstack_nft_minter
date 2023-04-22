@@ -41,7 +41,9 @@ const MainLayout = () => {
         </Head>
 
         <Header {...{ toggleSideMenu }} />
-        {page === Pages.DASHBOARD && <Dashboard {...{ setNft, setModalVisibility }} />}
+        {page === Pages.DASHBOARD && (
+          <Dashboard {...{ setNft, setModalVisibility, setPage, setSidemenuVisibility }} />
+        )}
         {page === Pages.MINTER && <Minter />}
         <Sidemenu {...{ setPage, toggleSideMenu, sidemenuVisibility }} />
 

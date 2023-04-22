@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import { useContractFunction, useEthers } from '@usedapp/core';
 import { Contract } from '@ethersproject/contracts';
 import { create as ipfsHttpClient } from 'ipfs-http-client';
-import ContractAbi from '../contractABI.json'; // Replace this with the path to your NFT contract ABI
+import ContractAbi from '../contractABI.json';
 import { ethers } from 'ethers';
 
 const projectId = process.env.NEXT_PUBLIC_IPFS_KEY;
