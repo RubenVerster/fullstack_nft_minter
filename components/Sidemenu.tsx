@@ -55,7 +55,7 @@ const Sidemenu: React.FC<ISidemenuProps> = ({ sidemenuVisibility, toggleSideMenu
                 <p className='bold'>{account}</p>
                 <br />
                 Balance:
-                <p className='bold'>{formatEther(etherBalance)}</p>
+                <p className='bold'>{formatEther(etherBalance)} ETH</p>
               </div>
             )}
 

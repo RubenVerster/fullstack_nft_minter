@@ -13,11 +13,8 @@ import { Nft } from '../types';
 import Modal from '../components/Modal';
 
 import { DummNfts } from '../dummyData';
-import { Network, Alchemy } from 'alchemy-sdk';
 
-import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } from '@usedapp/core';
-import { formatEther } from '@ethersproject/units';
-import { getDefaultProvider } from 'ethers';
+import { DAppProvider } from '@usedapp/core';
 import { config } from '../types';
 
 const MainLayout = () => {
