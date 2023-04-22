@@ -1,0 +1,39 @@
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200vw;
+  left: -50%;
+  line-height: 0;
+  animation: motionOfTheOcean 11s linear infinite;
+}
+
+.wave svg {
+  position: relative;
+  display: block;
+  width: 200vw;
+  height: 120px;
+}
+
+.wave .shape-fill {
+  fill: rgba($color: #000000, $alpha: 0.9);
+}
+
+// animation to move the custom shape left and right
+@keyframes motionOfTheOcean {
+  0% {
+    transform: translateX(0px);
+  }
+  25% {
+    transform: translateX(-20vw);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(20vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

@@ -40,7 +40,7 @@ const MainLayout = () => {
 
   return (
     <DAppProvider config={config}>
-      <div className='h-screen w-full relative px-20 app'>
+      <div className='h-screen w-full relative px-20 app overflow-hidden'>
         <Head>
           <title>NFT Minter THA</title>
           <meta name='description' content='NFT Minter THA' />
