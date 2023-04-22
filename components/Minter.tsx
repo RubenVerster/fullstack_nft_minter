@@ -60,7 +60,6 @@ const Minter: React.FC<IMinterProps> = ({ setSidemenuVisibility }) => {
     }
 
     try {
-      //@ts-ignore
       const uploadedImage = await ipfs.add(await image.arrayBuffer());
       const metadata = {
         title,
