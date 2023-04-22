@@ -42,6 +42,14 @@ a {
 .app {
   background: linear-gradient(169deg, #190250 0%, #38aae4 100%); }
 
+.dashboard_title {
+  background: linear-gradient(90deg, #e7e7e7 1.14%, #9e9e9e 28.83%, #f2f2f2 57.49%, #949494 89.98%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-size: 2.5rem; }
+
 .card {
   position: absolute;
   overflow: hidden;

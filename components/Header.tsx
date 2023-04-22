@@ -7,9 +7,9 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ toggleSideMenu }) => {
   return (
-    <div className='flex space-between p-2'>
+    <div className='flex justify-between p-2 pt-8'>
       <BrandedName />
-      <button className='absolute top-4 right-4' onClick={() => toggleSideMenu()}>
+      <button className=' top-8 right-8' onClick={() => toggleSideMenu()}>
         <VscMenu className='text-white' size={24} />
       </button>
     </div>
