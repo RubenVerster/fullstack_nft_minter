@@ -34,6 +34,10 @@ export interface ISidemenuProps {
   setPage: (page: Pages) => void;
 }
 
+export interface IMinterProps {
+  setSidemenuVisibility: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export interface IButtonProps {
   text: string;
   onClick: () => void;
@@ -44,6 +48,10 @@ export interface IButtonProps {
 export enum ButtonVariants {
   PRIMARY = 'primary',
   ERROR = 'error',
+}
+
+export interface IImageUploaderProps {
+  onFileChange: (file: File) => void;
 }
 
 import { ChainId, Config, Goerli } from '@usedapp/core';

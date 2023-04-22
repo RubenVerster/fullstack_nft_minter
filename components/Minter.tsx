@@ -4,6 +4,7 @@ import { Contract } from '@ethersproject/contracts';
 import { create as ipfsHttpClient } from 'ipfs-http-client';
 import ContractAbi from '../contractABI.json';
 import { ethers } from 'ethers';
+import ImageUploader from '../components/ImageUploader';
 
 const projectId = process.env.NEXT_PUBLIC_IPFS_KEY;
 const projectSecret = process.env.NEXT_PUBLIC_IPFS_SECRET_KEY;
@@ -17,15 +18,16 @@ const ipfs = ipfsHttpClient({
     authorization: auth,
   },
 });
+import { IMinterProps } from '../types';
 
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
-function YourComponent() {
+const Minter: React.FC<IMinterProps> = ({ setSidemenuVisibility }) => {
   const { library, account } = useEthers();
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState();
+  const [image, setImage] = useState<File | null>(null);
   const [contract, setContract] = useState<Contract>();
 
   useEffect(() => {
@@ -40,25 +42,18 @@ function YourComponent() {
     }
   }, [library]);
 
+  const uploadDisabled = !title || !description || !image;
+
   const { state: mintState, send: mintNFT } = useContractFunction(contract, 'mint', {});
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value);
   const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => setDescription(e.target.value);
-  const handleImageChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.files) {
-      //@ts-ignore
-      setImage(e.target.files[0]);
-    }
+  const handleImageChange = (file: File) => {
+    setImage(file);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleNftMint = async (e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
     e.preventDefault();
-
-    if (!account) {
-      alert('Please connect your wallet');
-      return;
-    }
-
     if (!title || !description || !image) {
       alert('Please fill out all fields');
       return;
@@ -83,26 +78,55 @@ function YourComponent() {
   };
 
   return (
-    <div className='bg-white/10 p-4 w-1/2'>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='title'>Title:</label>
-          <input type='text' id='title' value={title} onChange={handleTitleChange} />
+    <div className='p-4'>
+      <div className='flex flex-col my-6 p-6 border-2 bg-white/10 text-center border-white rounded-xl'>
+        <h2 className='dashboard_title'>Mint New NFT</h2>
+        <p className='text-white'>Mint your NFT and make it yours!</p>
+      </div>
+      {!account ? (
+        <div className='bg-white p-4 rounded border-2 border-blue-200 w-1/2'>
+          <h3 className='text-2xl'>
+            To view your minted NFTs, please{' '}
+            <span
+              className='cursor-pointer text-blue-300 hover:text-blue-800'
+              onClick={() => setSidemenuVisibility(true)}
+            >
+              connect your wallet
+            </span>
+          </h3>
         </div>
-        <div>
-          <label htmlFor='description'>Description:</label>
-          <input type='text' id='description' value={description} onChange={handleDescriptionChange} />
+      ) : (
+        <div className='w-full items-center flex flex-col'>
+          <div className='w-1/2 mb-2'>
+            <ImageUploader onFileChange={handleImageChange} />
+          </div>
+          <input
+            className='w-1/2  mb-2 border-2 bg-gray-600 rounded border-gray-300 p-2 text-white'
+            placeholder='NFT Title'
+            type='text'
+            id='title'
+            value={title}
+            onChange={handleTitleChange}
+          />
+          <input
+            className='w-1/2 mb-2 border-2 bg-gray-600 rounded border-gray-300 p-2 text-white'
+            placeholder='Description'
+            type='text'
+            id='description'
+            value={description}
+            onChange={handleDescriptionChange}
+          />
+          <button
+            disabled={uploadDisabled}
+            className='bg-blue-500 px-8 py-6 transition-all ease-in-out duration-200   mt-4 rounded hover:bg-blue-700 hover:text-white'
+            onClick={(e) => handleNftMint(e)}
+          >
+            Mint my NFT
+          </button>
         </div>
-        <div>
-          <label htmlFor='image'>Image:</label>
-          <input type='file' id='image' accept='image/*' onChange={handleImageChange} />
-        </div>
-        <button className='bg-green-500 p-2 rounded' type='submit'>
-          Mint NFT
-        </button>
-      </form>
+      )}
     </div>
   );
-}
+};
 
-export default YourComponent;
+export default Minter;

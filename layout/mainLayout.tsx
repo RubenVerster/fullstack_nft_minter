@@ -44,7 +44,7 @@ const MainLayout = () => {
         {page === Pages.DASHBOARD && (
           <Dashboard {...{ setNft, setModalVisibility, setPage, setSidemenuVisibility }} />
         )}
-        {page === Pages.MINTER && <Minter />}
+        {page === Pages.MINTER && <Minter {...{ setSidemenuVisibility }} />}
         <Sidemenu {...{ setPage, toggleSideMenu, sidemenuVisibility }} />
 
         <Modal {...{ modalVisibility, setModalVisibility, nft }} />
